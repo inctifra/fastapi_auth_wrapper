@@ -1,3 +1,7 @@
-from .dependencies import AuthorizedUserClient, authorization_service_dependency, AuthServiceClient
+from .dependencies import (
+    AuthorizedUserClient,
+    AuthServiceClient,
+    authorization_service_dependency,
+)
 
 __all__ = ["AuthorizedUserClient", "authorization_service_dependency", "AuthServiceClient"]

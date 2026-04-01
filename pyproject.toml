@@ -37,9 +37,58 @@ explicit = true
 [dependency-groups]
 dev = [
     "rav>=0.4.3",
+    "ruff>=0.15.8",
     "twine>=6.2.0",
 ]
 
 [project.urls]
 Homepage = "https://github.com/inctifra/fastapi_auth_wrapper"
 Repository = "https://github.com/inctifra/fastapi_auth_wrapper"
+
+[tool.ruff]
+# Target Python version
+target-version = "py311"
+
+
+# Line length (same as Black default or customize)
+line-length = 88
+
+# Enable useful rule sets
+lint.select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # import sorting
+    "UP",  # pyupgrade
+    "B",   # bugbear
+    "C4",  # comprehensions
+    "SIM", # simplifications
+]
+
+# Ignore specific rules if needed
+lint.ignore = [
+    "E501",  # line too long (if you prefer flexibility)
+    "B008"
+]
+
+
+# Auto-fix enabled rules
+fix = true
+
+# Exclude common directories
+exclude = [
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    ".venv",
+]
+
+# Import sorting settings (like isort)
+[tool.ruff.lint.isort]
+known-first-party = ["src"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+

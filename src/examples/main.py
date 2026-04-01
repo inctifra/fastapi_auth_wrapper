@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from fastapi_auth_wrapper import AuthorizedUserClient
 
+from fastapi_auth_wrapper import AuthorizedUserClient
 
 app = FastAPI()
 

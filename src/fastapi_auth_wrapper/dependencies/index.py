@@ -1,7 +1,9 @@
-from fastapi import Header, Depends
-from fastapi_auth_wrapper.clients import get_service_client, AuthServiceClient
-from fastapi.exceptions import HTTPException
 from typing import Annotated
+
+from fastapi import Depends, Header
+from fastapi.exceptions import HTTPException
+
+from fastapi_auth_wrapper.clients import AuthServiceClient, get_service_client
 
 
 async def authorization_service_dependency(

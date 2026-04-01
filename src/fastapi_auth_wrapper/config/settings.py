@@ -1,6 +1,7 @@
 from pathlib import Path
-from pydantic_settings import BaseSettings, SettingsConfigDict
+
 from pydantic import Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 SRC_DIR = Path(__file__).resolve().parent.parent.parent
 BASE_DIR = SRC_DIR.parent
@@ -23,6 +24,7 @@ class Settings(BaseSettings):
     auth_service_url: str = Field(..., env="AUTH_SERVICE_URL")
     auth_service_token_url: str = Field(..., env="AUTH_SERVICE_TOKEN_URL")
 
+def get_settings_dep():
+    return Settings()
 
-settings = Settings()
 
