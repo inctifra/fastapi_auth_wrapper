@@ -1,0 +1,44 @@
+[project]
+name = "fastapi-auth-wrapper"
+version = "0.1.0"
+description = "This is a FastAPI wrapper"
+readme = { file = "README.md", content-type = "text/markdown" }
+authors = [
+    { name = "dlion4", email = "dantemilimo@gmail.com" }
+]
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]>=0.135.2",
+    "httpx>=0.28.1",
+]
+
+keywords = ["fastapi", "auth", "jwt", "client"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Framework :: FastAPI",
+    "Operating System :: OS Independent"
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[[tool.uv.index]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+publish-url = "https://test.pypi.org/legacy/"
+explicit = true
+
+[dependency-groups]
+dev = [
+    "twine>=6.2.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/inctifra/fastapi-auth-wrapper"
+Repository = "https://github.com/inctifra/fastapi-auth-wrapper"
