@@ -1,5 +1,6 @@
 import httpx
-
+from fastapi import HTTPException
+import json
 
 class AuthServiceClientFactory:
     def __init__(self, base_url: str, token_url: str):
@@ -13,6 +14,14 @@ class AuthServiceClientFactory:
         self, endpoint: str, data: dict | None = None, headers: dict | None = None
     ) -> httpx.Response:
         async with self.create_client() as client:
-            response = await client.post(endpoint, json=data, headers=headers)
-            response.raise_for_status()
-            return response
+            try:
+                response = await client.post(endpoint, json=data, headers=headers)
+                response.raise_for_status()
+                return response
+            except httpx.HTTPStatusError as exc:
+                status_code = int(exc.response.status_code)
+                try:
+                    error = exc.response.json()
+                except (ValueError, Exception):
+                    error = exc.response.text
+                raise HTTPException(status_code=status_code, detail=error)
